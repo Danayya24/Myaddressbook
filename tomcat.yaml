@@ -40,13 +40,8 @@
       state: present
       backup: yes
       
-   - name: Change file  permissions
-     become: yes
-     become_user: root
-     path: /usr/local/apache-tomcat-9.0.96-src/bin
-     owner: root
-     group: root
-     mode: '0755'
+  - name: Fix 'support_tools' permissions
+    shell: 'chmod a+x /usr/local/apache-tomcat-9.0.96-src/bin*'
        
     
   - name: start tomcat services
