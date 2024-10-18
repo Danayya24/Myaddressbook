@@ -39,10 +39,7 @@
       line: allow="\d+\.\d+\.\d+\.\d+" />
       state: present
       backup: yes
-      
-  - name: Fix 'support_tools' permissions
-    shell: 'chmod a+x /usr/local/apache-tomcat-9.0.96/bin*'
-       
+           
     
   - name: start tomcat services
     shell: nohup /usr/local/apache-tomcat-9.0.96/bin/startup.sh
