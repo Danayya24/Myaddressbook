@@ -41,4 +41,4 @@
       backup: yes
       
   - name: start tomcat services
-    shell: nohup /usr/local/apache-tomcat-9.0.62/bin/startup.sh
+    shell: nohup /usr/local/apache-tomcat-9.0.96-src/bin/startup.sh
