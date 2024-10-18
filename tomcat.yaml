@@ -10,12 +10,12 @@
 
   - name: download tomcat server packages
     get_url:
-      url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.96/src/apache-tomcat-9.0.96-src.tar.gz
+      url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.96/bin/apache-tomcat-9.0.96.tar.gz
       dest: /usr/local
 
   - name: extract tomcat packages
     unarchive:
-      src: /usr/local/apache-tomcat-9.0.96-src.tar.gz
+      src: /usr/local/apache-tomcat-9.0.96.tar.gz
       dest: /usr/local/
       remote_src: yes
 
@@ -23,7 +23,7 @@
     become: yes
     become_user: root
     lineinfile:
-      path: /usr/local/apache-tomcat-9.0.96-src/conf/tomcat-users.xml
+      path: /usr/local/apache-tomcat-9.0.96/conf/tomcat-users.xml
       insertbefore: '</tomcat-users>'
       line: <user username="robot" password="hitu18feb" roles="manager-script"/>
       state: present
@@ -32,7 +32,7 @@
     become: yes
     become_user: root
     lineinfile:
-      path: /usr/local/apache-tomcat-9.0.96-src/webapps/manager/META-INF/context.xml
+      path: /usr/local/apache-tomcat-9.0.96/webapps/manager/META-INF/context.xml
       # The String to Search
       regexp: allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
       # The String to Replace
@@ -41,8 +41,8 @@
       backup: yes
       
   - name: Fix 'support_tools' permissions
-    shell: 'chmod a+x /usr/local/apache-tomcat-9.0.96-src/bin*'
+    shell: 'chmod a+x /usr/local/apache-tomcat-9.0.96/bin*'
        
     
   - name: start tomcat services
-    shell: nohup /usr/local/apache-tomcat-9.0.96-src/bin/startup.sh
+    shell: nohup /usr/local/apache-tomcat-9.0.96/bin/startup.sh
